@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <LangVersion>latest</LangVersion>
+    <Version>0.0.3</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="UnitGenerator" Version="1.4.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Label="Packaging">
+    <Content Include="UnitGeneratorTemplate.targets" PackagePath="build\UnitGeneratorTemplate.targets" />
+    <Content Include="UnitGenerator.tt" PackagePath="content\UnitGenerator.tt" />
+    <Content Include="UnitGenerator.csv" PackagePath="content\UnitGenerator.csv" />
+  </ItemGroup>
+
+</Project>
