@@ -1,2 +1,3 @@
 ﻿Name,Type,Format,ImplicitOperator,ParseMethod,MinMaxMethod,ArithmeticOperator,ValueArithmeticOperator,Comparable,Validate,JsonConverter,MessagePackFormatter,DapperTypeHandler,EntityFrameworkValueConverter
 UserId,int,,,,,,,,,,,,
+Format,int,,,,,,,,,,,,

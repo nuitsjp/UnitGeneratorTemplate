@@ -1,4 +1,4 @@
-ï»¿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ template debug="false" hostspecific="true" language="C#" #>
 <#@ assembly name="System.Core" #>
 <#@ assembly name="EnvDTE" #>
 <#@ assembly name="VSLangProj" #>
@@ -12,7 +12,7 @@
 <#@ output extension=".cs" #>
 using UnitGenerator;
 
-namespace UnitGeneratorTemplate
+namespace UnitGeneratorTemplate.Test
 {
 
 <#
@@ -91,20 +91,20 @@ private IEnumerable<string[]> ParseCsv(TextReader reader)
             {
                 if (character == '"')
                 {
-                    // å…ˆé ­ãªã®ã§ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã•ã‚ŒãŸã‚»ãƒ«ã€‚èª­ã¿é£›ã°ã™ã€‚
+                    // æ“ª‚È‚Ì‚ÅƒGƒXƒP[ƒv‚³‚ê‚½ƒZƒ‹B“Ç‚İ”ò‚Î‚·B
                     isEscaped = true;
                     isTopOfCell = false;
                 }
                 else if (character == ',')
                 {
-                    // ç©ºã®ã‚»ãƒ«
+                    // ‹ó‚ÌƒZƒ‹
                     cells.Add(cell.ToString());
                     cell.Clear();
                     isTopOfCell = true;
                 }
                 else 
                 {
-                    // ã‚»ãƒ«ã®1æ–‡å­—ç›®ã¨ã—ã¦ã‚ã¤ã‹ã†
+                    // ƒZƒ‹‚Ì1•¶š–Ú‚Æ‚µ‚Ä‚ ‚Â‚©‚¤
                     cell.Append(character);
                     isTopOfCell = false;
                 }
@@ -113,13 +113,13 @@ private IEnumerable<string[]> ParseCsv(TextReader reader)
             {
                 if (character == ',' && isEscaped)
                 {
-                    // ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã•ã‚Œã¦ã„ã‚‹ã®ã§å€¤ã¨ã—ã¦ã‚ã¤ã‹ã†
+                    // ƒGƒXƒP[ƒv‚³‚ê‚Ä‚¢‚é‚Ì‚Å’l‚Æ‚µ‚Ä‚ ‚Â‚©‚¤
                     cell.Append(character);
                     isTopOfCell = false;
                 }
                 else if (character == ',' && isEscaped is false)
                 {
-                    // ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã•ã‚Œã¦ã„ãªã„ã®ã§ã‚»ãƒ«ã®åŒºåˆ‡ã‚Šã¨ã—ã¦ã‚ã¤ã‹ã†
+                    // ƒGƒXƒP[ƒv‚³‚ê‚Ä‚¢‚È‚¢‚Ì‚ÅƒZƒ‹‚Ì‹æØ‚è‚Æ‚µ‚Ä‚ ‚Â‚©‚¤
                     cells.Add(cell.ToString());
                     cell.Clear();
                     isTopOfCell = true;
@@ -128,14 +128,14 @@ private IEnumerable<string[]> ParseCsv(TextReader reader)
                 {
                     if (line.Length - 1 == i)
                     {
-                        // æœ€å¾Œã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãªã®ã§é–‰ã˜ã®ãƒ€ãƒ–ãƒ«ã‚¯ã‚©ãƒ¼ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã¨ã—ã¦åˆ¤æ–­ã—ä½•ã‚‚ã—ãªã„
+                        // ÅŒã‚ÌƒCƒ“ƒfƒbƒNƒX‚È‚Ì‚Å•Â‚¶‚Ìƒ_ƒuƒ‹ƒNƒH[ƒe[ƒVƒ‡ƒ“‚Æ‚µ‚Ä”»’f‚µ‰½‚à‚µ‚È‚¢
                     }
                     else
                     {
                         var nextCharacter = line[i + 1];
                         if (nextCharacter == ',')
                         {
-                            // ã‚»ãƒ«ã®æœ«å°¾ãªã®ã§ã¤ãã®ã‚»ãƒ«ã¸
+                            // ƒZƒ‹‚Ì––”ö‚È‚Ì‚Å‚Â‚¬‚ÌƒZƒ‹‚Ö
                             i++;
                             cells.Add(cell.ToString());
                             cell.Clear();
@@ -144,7 +144,7 @@ private IEnumerable<string[]> ParseCsv(TextReader reader)
                         }
                         else if (nextCharacter == '"')
                         {
-                            // ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã•ã‚ŒãŸãƒ€ãƒ–ãƒ«ã‚¯ã‚©ãƒ¼ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³
+                            // ƒGƒXƒP[ƒv‚³‚ê‚½ƒ_ƒuƒ‹ƒNƒH[ƒe[ƒVƒ‡ƒ“
                             i++;
                             cell.Append('"');
                             isTopOfCell = false;
@@ -157,7 +157,7 @@ private IEnumerable<string[]> ParseCsv(TextReader reader)
                 }
                 else
                 {
-                    // é€šå¸¸ã®å€¤
+                    // ’Êí‚Ì’l
                     cell.Append(character);
                     isTopOfCell = false;
                 }

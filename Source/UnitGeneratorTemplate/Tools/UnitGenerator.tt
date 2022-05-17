@@ -12,7 +12,7 @@
 <#@ output extension=".cs" #>
 using UnitGenerator;
 
-namespace UnitGeneratorTemplate
+namespace %Namespace%
 {
 
 <#
