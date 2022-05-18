@@ -1,10 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0;net48</TargetFrameworks>
+    <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <LangVersion>10</LangVersion>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -13,6 +12,7 @@
     <PackageReference Include="Dapper" Version="2.0.123" />
     <PackageReference Include="FluentAssertions" Version="6.6.0" />
     <PackageReference Include="MessagePack" Version="2.3.85" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.5" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
     <PackageReference Include="System.Runtime" Version="4.3.1" />
     <PackageReference Include="System.Text.Json" Version="6.0.4" />
@@ -42,10 +42,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>UnitGenerator.tt</DependentUpon>
     </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="C:\Repos\UnitGeneratorTemplate\Source\UnitGeneratorTemplate.Test\\UnitGenerator.cs" />
   </ItemGroup>
 
 </Project>
