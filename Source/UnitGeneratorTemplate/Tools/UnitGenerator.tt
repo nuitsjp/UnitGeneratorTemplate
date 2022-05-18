@@ -23,19 +23,20 @@ foreach(var item in items)
 {
     var name = item[0];
     var type = item[1];
-    var stringFormat = item[2];
+    var description = item[2];
+    var stringFormat = item[3];
     var options = new List<string>();
-    if(IsNotEmpty(item[3])) options.Add("UnitGenerateOptions.ImplicitOperator");
-    if(IsNotEmpty(item[4])) options.Add("UnitGenerateOptions.ParseMethod");
-    if(IsNotEmpty(item[5])) options.Add("UnitGenerateOptions.MinMaxMethod");
-    if(IsNotEmpty(item[6])) options.Add("UnitGenerateOptions.ArithmeticOperator");
-    if(IsNotEmpty(item[7])) options.Add("UnitGenerateOptions.ValueArithmeticOperator");
-    if(IsNotEmpty(item[8])) options.Add("UnitGenerateOptions.Comparable");
-    if(IsNotEmpty(item[9])) options.Add("UnitGenerateOptions.Validate");
-    if(IsNotEmpty(item[10])) options.Add("UnitGenerateOptions.JsonConverter");
-    if(IsNotEmpty(item[11])) options.Add("UnitGenerateOptions.MessagePackFormatter");
-    if(IsNotEmpty(item[12])) options.Add("UnitGenerateOptions.DapperTypeHandler");
-    if(IsNotEmpty(item[13])) options.Add("UnitGenerateOptions.EntityFrameworkValueConverter");
+    if(IsNotEmpty(item[4])) options.Add("UnitGenerateOptions.ImplicitOperator");
+    if(IsNotEmpty(item[5])) options.Add("UnitGenerateOptions.ParseMethod");
+    if(IsNotEmpty(item[6])) options.Add("UnitGenerateOptions.MinMaxMethod");
+    if(IsNotEmpty(item[7])) options.Add("UnitGenerateOptions.ArithmeticOperator");
+    if(IsNotEmpty(item[8])) options.Add("UnitGenerateOptions.ValueArithmeticOperator");
+    if(IsNotEmpty(item[9])) options.Add("UnitGenerateOptions.Comparable");
+    if(IsNotEmpty(item[10])) options.Add("UnitGenerateOptions.Validate");
+    if(IsNotEmpty(item[11])) options.Add("UnitGenerateOptions.JsonConverter");
+    if(IsNotEmpty(item[12])) options.Add("UnitGenerateOptions.MessagePackFormatter");
+    if(IsNotEmpty(item[13])) options.Add("UnitGenerateOptions.DapperTypeHandler");
+    if(IsNotEmpty(item[14])) options.Add("UnitGenerateOptions.EntityFrameworkValueConverter");
 
     var option = string.Join(" | ", options);
 
@@ -60,6 +61,9 @@ foreach(var item in items)
         }
     }
 #>
+    /// <summary>
+    /// <#= description #>
+    /// </summary>
     [UnitOf(typeof(<#= type #>)<#= optionArgs.ToString() #>)]
     public partial struct <#= name #>
     {

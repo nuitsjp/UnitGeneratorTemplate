@@ -1,3 +1,3 @@
 ﻿Name,Type,Format,ImplicitOperator,ParseMethod,MinMaxMethod,ArithmeticOperator,ValueArithmeticOperator,Comparable,Validate,JsonConverter,MessagePackFormatter,DapperTypeHandler,EntityFrameworkValueConverter
-EntityFrameworkValueConverter,int,,,,,,,,,,,,1
-Full,int,"{0:000-000-000}",1,1,1,1,1,1,1,1,1,1,1
+EntityFrameworkValueConverter,int,,,,,,,,,,,,,1
+Full,int,,"{0:000-000-000}",1,1,1,1,1,1,1,1,1,1,1
