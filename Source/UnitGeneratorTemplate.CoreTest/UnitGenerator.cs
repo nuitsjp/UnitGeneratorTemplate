@@ -19,7 +19,7 @@ namespace UnitGeneratorTemplate.CoreTest
     {
         private partial void Validate()
         {
-            if (10 < value) throw new Exception($"Invalid value range: {value}");
+            if (value <= 10 is false) throw new Exception($"Invalid value range: {value}");
         }
     }
 

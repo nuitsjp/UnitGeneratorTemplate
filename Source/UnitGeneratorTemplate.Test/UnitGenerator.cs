@@ -75,8 +75,16 @@ namespace UnitGeneratorTemplate.Test
     {
         private partial void Validate()
         {
-            if (10 < value) throw new InvalidOperationException($"Invalid value range: {value}");
+            if (value <= 5 is false) throw new InvalidOperationException($"Invalid value range: {value}");
         }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    [UnitOf(typeof(int), UnitGenerateOptions.Validate)]
+    public partial struct SelfValidatable
+    {
     }
 
     /// <summary>

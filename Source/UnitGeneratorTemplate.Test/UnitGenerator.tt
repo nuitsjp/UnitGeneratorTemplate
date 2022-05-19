@@ -38,7 +38,7 @@ foreach(var item in items)
     if(IsNotEmpty(item[13])) options.Add("UnitGenerateOptions.DapperTypeHandler");
     if(IsNotEmpty(item[14])) options.Add("UnitGenerateOptions.EntityFrameworkValueConverter");
 
-    var hasValidate = IsNotEmpty(item[10]);
+    var hasValidate = 5 < item[10].Length;
     var validateRule = item[10];
 
     var option = string.Join(" | ", options);
@@ -76,7 +76,7 @@ foreach(var item in items)
 #>
         private partial void Validate()
         {
-            if (10 < value) throw new <#= validateException #>($"<#= validateExceptionMessage #>");
+            if (<#= validateRule #> is false) throw new <#= validateException #>($"<#= validateExceptionMessage #>");
         }
 <#  
     }
@@ -190,4 +190,5 @@ public static bool IsNotEmpty(string value)
 }
 
 #>
+
 
