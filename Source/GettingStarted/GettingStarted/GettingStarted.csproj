@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net48</TargetFrameworks>
@@ -13,11 +13,15 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="UnitGeneratorTemplate" Version="0.0.42" />
+    <PackageReference Include="UnitGeneratorTemplate" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Repos\UnitGeneratorTemplate\Source\GettingStarted\GettingStarted\\UnitGenerator.cs" />
   </ItemGroup>
 
   <ItemGroup>
