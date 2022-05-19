@@ -16,7 +16,7 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
     <PackageReference Include="System.Runtime" Version="4.3.1" />
     <PackageReference Include="System.Text.Json" Version="6.0.4" />
-    <PackageReference Include="UnitGeneratorTemplate" Version="0.0.42" />
+    <PackageReference Include="UnitGeneratorTemplate" Version="0.0.45" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -34,6 +34,10 @@
 
   <ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Repos\UnitGeneratorTemplate\Source\UnitGeneratorTemplate.CoreTest\\UnitGenerator.cs" />
   </ItemGroup>
 
   <ItemGroup>

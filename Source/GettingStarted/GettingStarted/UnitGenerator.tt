@@ -1,18 +1,18 @@
 <#@ template debug="false" hostspecific="true" language="C#" #>
 <#@ assembly name="System.Core" #>
+<#@ assembly name="EnvDTE" #>
+<#@ assembly name="VSLangProj" #>
 <#@ import namespace="Microsoft.VisualStudio.TextTemplating" #>
 <#@ import namespace="System.IO" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="EnvDTE" #>
+<#@ import namespace="VSLangProj" #>
 <#@ output extension=".cs" #>
-<#  
-var validateException = "Exception";
-var validateExceptionMessage = "Invalid value range: {value}";
-#>
 using UnitGenerator;
 
-namespace UnitGeneratorTemplate.CoreTest
+namespace GettingStarted
 {
 
 <#
@@ -37,9 +37,6 @@ foreach(var item in items)
     if(IsNotEmpty(item[12])) options.Add("UnitGenerateOptions.MessagePackFormatter");
     if(IsNotEmpty(item[13])) options.Add("UnitGenerateOptions.DapperTypeHandler");
     if(IsNotEmpty(item[14])) options.Add("UnitGenerateOptions.EntityFrameworkValueConverter");
-
-    var hasValidate = IsNotEmpty(item[10]);
-    var validateRule = item[10];
 
     var option = string.Join(" | ", options);
 
@@ -70,17 +67,6 @@ foreach(var item in items)
     [UnitOf(typeof(<#= type #>)<#= optionArgs.ToString() #>)]
     public partial struct <#= name #>
     {
-<#  
-    if(hasValidate)
-    {
-#>
-        private partial void Validate()
-        {
-            if (10 < value) throw new <#= validateException #>($"<#= validateExceptionMessage #>");
-        }
-<#  
-    }
-#>
     }
 
 <#
@@ -88,6 +74,8 @@ foreach(var item in items)
 #>
 }
 <#+
+
+static DTE Dte;
 
 private IEnumerable<string[]> ParseCsv(TextReader reader)
 {
@@ -190,4 +178,3 @@ public static bool IsNotEmpty(string value)
 }
 
 #>
-

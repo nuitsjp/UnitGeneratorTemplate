@@ -73,6 +73,10 @@ namespace UnitGeneratorTemplate.Test
     [UnitOf(typeof(int), UnitGenerateOptions.Validate)]
     public partial struct Validatable
     {
+        private partial void Validate()
+        {
+            if (10 < value) throw new InvalidOperationException($"Invalid value range: {value}");
+        }
     }
 
     /// <summary>

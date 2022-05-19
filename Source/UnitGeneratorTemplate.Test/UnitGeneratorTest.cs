@@ -70,8 +70,8 @@ namespace UnitGeneratorTemplate.Test
         [Fact]
         public void Validate()
         {
-            FluentActions.Invoking(() => new Validatable(11))
-                .Should().Throw<Exception>("Invalid value range: 11");
+            FluentActions.Invoking(() => new Validatable(21))
+                .Should().Throw<InvalidOperationException>();
         }
 
         [Fact]
@@ -95,14 +95,6 @@ namespace UnitGeneratorTemplate.Test
             Dapper.SqlMapper.LookupDbType(typeof(DapperTypeHandler), nameof(DapperTypeHandler), true, out var handler);
 #pragma warning restore CS0618
             handler.GetType().Should().Be(typeof(DapperTypeHandler.DapperTypeHandlerTypeHandler));
-        }
-    }
-
-    public partial struct Validatable
-    {
-        private partial void Validate()
-        {
-            if (10 < value) throw new Exception("Invalid value range: " + value);
         }
     }
 }

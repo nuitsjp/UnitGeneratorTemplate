@@ -69,12 +69,4 @@ namespace UnitGeneratorTemplate.CoreTest
 
         }
     }
-
-    public partial struct Full
-    {
-        private partial void Validate()
-        {
-            if (10 < value) throw new Exception("Invalid value range: " + value);
-        }
-    }
 }
